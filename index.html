@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+	<html class="sl-root decks export offline loaded">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Effiziente Übertragungvon Android Sensordaten</title>
+
+
+		<link rel="stylesheet" type="text/css" href="lib/offline-v2.css">
+
+
+
+	</head>
+	<body class="reveal-viewport theme-font-montserrat theme-color-white-blue">
+		<div class="reveal">
+			<div class="slides">
+				<section data-id="8550ea1ca4018da050866a237f7c7a7c"><div class="sl-block" data-block-type="text" style="width: 960px; left: 0px; top: 203.5px; height: auto;" data-block-id="e2a3460b461049383c466f4b3d1c4b2f"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1>Effiziente Übertragung<br>
+von Android Sensordaten</h1>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 240px; height: 46.6252px; left: 0px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-3623a7" data-block-id="33978a3d49e7d090e599a6b306c060a4"><div class="sl-block-style" style="z-index: 11; transform: rotate(0deg);"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="803" data-natural-height="156" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/dcb36f396074a2615b6baa5b0514f311.png"></div></div></div>
+<div class="sl-block" data-block-type="image" style="width: 70px; height: 70px; left: 890px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-02649c" data-block-id="0e8439a30b5f4e1d5c0e31f2ba1c9cb5"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="131" data-natural-height="131" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/03c6474b21322936b44adcd64b8fea6d.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180.161px; top: 630px;" data-name="text-79aa58" data-block-id="92560e532fc14887249918e293d906c7"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>Jonas Thelemann</p>
+</div></div></section><section data-id="ec586e4f614bbb09cdd2786bc89ecb89">
+<div class="sl-block" data-block-type="image" style="width: 70px; height: 70px; left: 890px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-02649c" data-block-id="bbd301960cb103fffba3832b90fc3154"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="131" data-natural-height="131" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/03c6474b21322936b44adcd64b8fea6d.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 480px; left: 240px; top: 280px;" data-name="text-17279d" data-block-id="8402320235310771ef7cd5513c5bd9ff"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; line-height: 1.95;" data-has-line-height="">
+<ol>
+	<li class="fragment" data-fragment-index="0">Projektziel 🎯</li>
+	<li class="fragment" data-fragment-index="1">App 📱</li>
+	<li class="fragment" data-fragment-index="2">Datenformate 🔢</li>
+	<li class="fragment" data-fragment-index="3">Übertragungsmethoden 🔌</li>
+	<li class="fragment" data-fragment-index="4">Ergebnisse 📊</li>
+</ol>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 140px;" data-name="text-398508" data-block-id="fb837d62e5136ebb8b1036e93b9b3182"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; transition-duration: 0.6s;" data-animation-type="fade-in">
+<h2>Gliederung</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 240px; height: 46.6252px; left: 0px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-3623a7" data-block-id="d354ea08cff2a68b8d60f018d0753756"><div class="sl-block-style" style="z-index: 13; transform: rotate(0deg);"><div class="sl-block-content" style="z-index: 13;"><img style="" data-natural-width="803" data-natural-height="156" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/dcb36f396074a2615b6baa5b0514f311.png"></div></div></div></section><section class="stack" data-id="97195bb3b4092478e4559f070dae10e5"><section data-id="2eb91ca9d27ca8df37cb2f85508f5f0e">
+<div class="sl-block" data-block-type="image" style="width: 70px; height: 70px; left: 890px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-02649c" data-block-id="cb59082a87422de3042e7e344dfd4f0b"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="131" data-natural-height="131" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/03c6474b21322936b44adcd64b8fea6d.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 140px;" data-name="text-398508" data-block-id="38b65a035fe735bf6afe755817a5b67d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; transition-duration: 0.6s;" data-animation-type="fade-in">
+<h2>Projektziel 🎯</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180.161px; top: 101px;" data-name="text-5cd003" data-block-id="e638e8a88e42f0037ab1adc10ab813c6"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; transition-duration: 0.6s;" data-animation-type="fade-in">
+<p>1/5</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 123.622px; height: 167.5px; left: 782.905px; top: 361.75px; min-width: 1px; min-height: 1px;" data-name="image-b69f9f" data-block-id="46231b899a00e1a31e2b5d9e99b618d2"><a class="sl-block-content fragment" style="z-index: 13;" data-fragment-index="2" href="https://images.app.goo.gl/NzovXgxfPYi1wgr77" target="_blank"><img style="" data-natural-width="648" data-natural-height="878" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/a2ee1b670d66f8dfb00456200a453626.png"></a></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 240px; left: 576.527px; top: 348px;" data-name="text-162647" data-block-id="771b7b81667131a6d9aeaaa421eafad3"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" data-fragment-index="2">
+<p><span style="font-size:5.0em">🖥️</span></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 158px; left: 686.716px; top: 543px;" data-name="text-e4f01d" data-block-id="efbf14f1f92770d5745e1629ee2b0974"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;" data-fragment-index="2">
+<p>Go-Server</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 240px; left: 136.848px; top: 348px;" data-block-id="1c64a04654d12f707f5eac1c6800f891" data-name="text-0dc3df"><div class="sl-block-style" style="z-index: 16; transform: rotate(0deg);"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;" data-fragment-index="0">
+<p><span style="font-size:5.0em">📱</span></p>
+</div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 249px; left: 65.4015px; top: 538.5px;" data-name="text-fe864f" data-block-id="a5df55bb854078afd331ee9faa5d521b"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17;" data-fragment-index="0">
+<p>Android-App</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 142.893px; height: 153.219px; left: 53.795px; top: 368.891px; min-width: 1px; min-height: 1px;" data-name="image-7e579b" data-block-id="67106afcd2737babe4feab92902e870f"><a class="sl-block-content fragment" style="z-index: 18;" data-fragment-index="0" href="https://images.app.goo.gl/LmRgPVBAATopKcyaA" target="_blank"><img style="" data-natural-width="429" data-natural-height="460" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/12269ce183dfc91213e7b898d77e6e4f.png"></a></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 336.527px; top: 444.501px;" data-name="line-c21652" data-block-id="40ba615cfa041833a7e85cc4c7637311"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="0" data-line-x2="240" data-line-y2="0" data-line-color="#000000" data-line-start-type="none" data-line-end-type="line-arrow" style="z-index: 19;" data-line-style="dashed" data-line-width="10px" data-fragment-index="2"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="240" height="1" viewbox="0 0 240 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="232.5" y2="0"></line><line class="line-element" stroke="#000000" stroke-width="10" stroke-dasharray="26.25 26.25" x1="0" y1="0" x2="232.5" y2="0"></line><path style="fill: rgba(0,0,0,0);" stroke="#000000" stroke-width="10" transform="translate(232.5,0) rotate(90)" d="M 22.5 22.5 L 0 0 L -22.5 22.5"></path></svg></div></div>
+<div class="sl-block" data-block-type="image" style="width: 119px; height: 119px; left: 397.027px; top: 325.501px; min-width: 1px; min-height: 1px;" data-name="image-12e0a3" data-block-id="e1ea536e3c75b862bb79f7811aa8e1a8"><a class="sl-block-content fragment" style="z-index: 20;" data-fragment-index="1" href="https://fonts.google.com/icons?selected=Material%20Icons%20Outlined%3Asensors" target="_blank"><img style="" data-natural-width="24" data-natural-height="24" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/8cb49dde7dfc65db4eef3d781410cd68.svg"></a></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 203.473px; left: 354.791px; top: 463px;" data-name="text-fd79a7" data-block-id="3f8bfd74b97e2d3e5f0f34f23576bb84"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 21;" data-fragment-index="1">
+<p>Sensordaten</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 240px; height: 46.6252px; left: 0px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-3623a7" data-block-id="cc4abc5808d864a24432887641f61745"><div class="sl-block-style" style="z-index: 22; transform: rotate(0deg);"><div class="sl-block-content" style="z-index: 22;"><img style="" data-natural-width="803" data-natural-height="156" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/dcb36f396074a2615b6baa5b0514f311.png"></div></div></div></section><section data-id="6c1c62a6cce731e6b642e473fea72ea3">
+<div class="sl-block" data-block-type="image" style="width: 70px; height: 70px; left: 890px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-02649c" data-block-id="5ba21cab5f709c172c65d9f16893625c"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="131" data-natural-height="131" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/03c6474b21322936b44adcd64b8fea6d.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 140px;" data-name="text-398508" data-block-id="5a9d542ec6755491180e1b26db250a2b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<h2>Projektziel 🎯</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180.161px; top: 101px;" data-name="text-5cd003" data-block-id="7ceb7e7ae4495fcf92e878141bebcd08"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>1/5</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 560px; left: 200px; top: 396px;" data-name="text-461ec6" data-block-id="f91b82426dd4cbe28a1777e04ad413a6"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; line-height: 1.95; text-align: left;" data-has-line-height="">
+<ol>
+	<li class="fragment" data-fragment-index="0"><span style="font-size:1.4em"><strong>JSON vs. FlatBuffers❓</strong></span></li>
+	<li class="fragment" data-fragment-index="1"><span style="font-size:1.4em"><strong>WebSockets vs. TCP❓</strong></span></li>
+</ol>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 560px; left: 200px; top: 330.5px;" data-name="text-8cce28" data-block-id="6267bd46a9d029f98c64fe001566f200"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; text-align: center; transition-duration: 0.6s;" data-animation-type="fade-in">
+<p>Fragen:</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 240px; height: 46.6252px; left: 0px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-3623a7" data-block-id="8db1b7440006a21ae6062eb61135f3d0"><div class="sl-block-style" style="z-index: 15; transform: rotate(0deg);"><div class="sl-block-content" style="z-index: 15;"><img style="" data-natural-width="803" data-natural-height="156" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/dcb36f396074a2615b6baa5b0514f311.png"></div></div></div></section></section><section class="stack" data-id="da7a26fc6b708bc6c594f664e701db9a"><section data-id="0ca2467849be562883db5d85f816b981">
+<div class="sl-block" data-block-type="image" style="width: 70px; height: 70px; left: 890px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-02649c" data-block-id="74249e1cd612e14f14fd47f5d2e0ce86"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="131" data-natural-height="131" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/03c6474b21322936b44adcd64b8fea6d.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 191.92px; top: 262.5px;" data-name="text-398508" data-block-id="698856b5fa839c45ecc92582bd85d5a2"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; transition-duration: 0.6s;" data-animation-type="fade-in">
+<h2>App 📱</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 192.081px; top: 223.5px;" data-name="text-5cd003" data-block-id="72ed08eab61a17f338d0f2d8391f8f92"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; transition-duration: 0.6s;" data-animation-type="fade-in">
+<p>2/5</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 314.844px; height: 559.999px; left: 44.477px; top: 140.001px; min-width: 1px; min-height: 1px;" data-name="image-c2da27" data-block-id="f036b8af9c72f2c9e76b7f5f1e644339"><div class="sl-block-content fragment" style="z-index: 13;" data-fragment-index="1"><img style="" data-natural-width="759" data-natural-height="1350" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/22bfc39020eb25008cfda46f073a8d1b.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 265.067px; height: 560px; left: 624.933px; top: 140.001px; min-width: 1px; min-height: 1px;" data-name="image-ad5491" data-block-id="e7572777ea5e246e760fe3d669b9390c"><div class="sl-block-content fragment" style="z-index: 14;" data-fragment-index="2"><img style="" data-natural-width="639" data-natural-height="1350" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/0b3b0920dd46f98d0769d0c836f6d796.jpg"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 169.679px; height: 169.679px; left: 407.161px; top: 420px; min-width: 1px; min-height: 1px;" data-name="image-10bee4" data-block-id="ed66a57ef522565790068aa8b5d1253c"><div class="sl-block-content fragment" style="z-index: 15;" data-fragment-index="0"><img style="" data-natural-width="1350" data-natural-height="1350" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/fecffb158df75672f0a6f587146819a6.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 240px; left: 371.321px; top: 589.679px;" data-name="text-2b537b" data-block-id="3fe8eb2c560315a241c370545e1a9cf6"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16; color: rgb(0, 0, 0);" data-fragment-index="0">
+<h3>Gosoan</h3>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 240px; height: 46.6252px; left: 0px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-3623a7" data-block-id="edd75b8ddac1c38f6fb1e2ce4aaac367"><div class="sl-block-style" style="z-index: 17; transform: rotate(0deg);"><div class="sl-block-content" style="z-index: 17;"><img style="" data-natural-width="803" data-natural-height="156" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/dcb36f396074a2615b6baa5b0514f311.png"></div></div></div></section><section data-id="27b44e1892f6235b5a989d988e7dca0d">
+<div class="sl-block" data-block-type="image" style="width: 70px; height: 70px; left: 890px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-02649c" data-block-id="0f4d6eab281656bbbae44cdd2c20ad21"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="131" data-natural-height="131" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/03c6474b21322936b44adcd64b8fea6d.png"></div></div>
+
+
+<div class="sl-block" data-block-type="image" style="width: 314.844px; height: 560px; left: 43.5455px; top: 140px; min-width: 1px; min-height: 1px;" data-name="image-699166" data-block-id="c792c48355a4319ebb857a1dbf494996"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="759" data-natural-height="1350" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/b7b135bff2dafc36ddaf1006966ab0cb.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 314.844px; height: 560px; left: 610.156px; top: 140px; min-width: 1px; min-height: 1px;" data-name="image-723fb4" data-block-id="3b54098fb7e674cbcaa8ddae29f7edb0"><div class="sl-block-content fragment" style="z-index: 12;" data-fragment-index="0"><img style="" data-natural-width="759" data-natural-height="1350" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/2ed1bb93344a93b10ce91025f77bcfee.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 191.92px; top: 262.5px;" data-name="text-398508" data-block-id="eaba8b35d5ed1d4e047bdf58513ca339"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<h2>App 📱</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 192.081px; top: 223.5px;" data-name="text-5cd003" data-block-id="fcf84190fa6232667cf9b55b9655da6e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p>2/5</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 169.679px; height: 169.679px; left: 407.161px; top: 420px; min-width: 1px; min-height: 1px;" data-name="image-10bee4" data-block-id="7f65e0b2a1bc4529db11159cefc15f0a"><div class="sl-block-content" style="z-index: 15;"><img style="" data-natural-width="1350" data-natural-height="1350" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/fecffb158df75672f0a6f587146819a6.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 240px; left: 371.321px; top: 589.679px;" data-name="text-2b537b" data-block-id="75e05f0ab3cb7e054208f3f4f7a8e803"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16; color: rgb(0, 0, 0);">
+<h3>Gosoan</h3>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 240px; height: 46.6252px; left: 0px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-3623a7" data-block-id="96b028787583a5b8c35b3ae3762393de"><div class="sl-block-style" style="z-index: 17; transform: rotate(0deg);"><div class="sl-block-content" style="z-index: 17;"><img style="" data-natural-width="803" data-natural-height="156" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/dcb36f396074a2615b6baa5b0514f311.png"></div></div></div></section><section data-id="9193bfe5e2fad3a9e36b79289130f01a">
+<div class="sl-block" data-block-type="image" style="width: 70px; height: 70px; left: 890px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-02649c" data-block-id="d80a9c1bf6d4c09d8f2df65cc9bb1bb2"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="131" data-natural-height="131" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/03c6474b21322936b44adcd64b8fea6d.png"></div></div>
+
+
+<div class="sl-block" data-block-type="image" style="width: 314.844px; height: 560px; left: 43.154px; top: 140px; min-width: 1px; min-height: 1px;" data-name="image-70c3c3" data-block-id="203047804030e8b2214d1df78a035d86"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="759" data-natural-height="1350" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/1c541b650f2e7e63475d827bf96871af.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 314.844px; height: 560px; left: 610.933px; top: 140px; min-width: 1px; min-height: 1px;" data-name="image-aa1e1b" data-block-id="4026f3709a499d7cf75c5183aa647ee8"><div class="sl-block-content fragment" style="z-index: 12;" data-fragment-index="0"><img style="" data-natural-width="759" data-natural-height="1350" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/de5f93b366684279ff2846dc5f195ea3.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 191.92px; top: 262.5px;" data-name="text-398508" data-block-id="d96c9e5f6bfbc67c9f5797f6c66ffcc0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<h2>App 📱</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 192.081px; top: 223.5px;" data-name="text-5cd003" data-block-id="7763f2f6f2fca9cea2126edfcde568e8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p>2/5</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 169.679px; height: 169.679px; left: 407.161px; top: 420px; min-width: 1px; min-height: 1px;" data-name="image-10bee4" data-block-id="036a22356b287292f579a190774c384d"><div class="sl-block-content" style="z-index: 15;"><img style="" data-natural-width="1350" data-natural-height="1350" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/fecffb158df75672f0a6f587146819a6.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 240px; left: 371.321px; top: 589.679px;" data-name="text-2b537b" data-block-id="e72da87b0ddb40c463edd8ee876edd13"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16; color: rgb(0, 0, 0);">
+<h3>Gosoan</h3>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 240px; height: 46.6252px; left: 0px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-3623a7" data-block-id="efbabdd1df2f8fe580cc6331fb77f356"><div class="sl-block-style" style="z-index: 17; transform: rotate(0deg);"><div class="sl-block-content" style="z-index: 17;"><img style="" data-natural-width="803" data-natural-height="156" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/dcb36f396074a2615b6baa5b0514f311.png"></div></div></div></section></section><section class="stack" data-id="f6d66fe375c2adf6cfd9878cbb96b309"><section data-id="94333d575dd92ae0acc04f5275f3df1a">
+<div class="sl-block" data-block-type="image" style="width: 70px; height: 70px; left: 890px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-02649c" data-block-id="8c8bc632bac785e096bec2ed8e12d459"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="131" data-natural-height="131" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/03c6474b21322936b44adcd64b8fea6d.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 140px;" data-name="text-398508" data-block-id="9a1a2254f499671e705224c26ed8decb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; transition-duration: 0.6s;" data-animation-type="fade-in">
+<h2>Datenformate 🔢</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180.161px; top: 101px;" data-name="text-5cd003" data-block-id="faaab7a00d843a8d0dc2018ef9815187"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; transition-duration: 0.6s;" data-animation-type="fade-in">
+<p>3/5</p>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 458px; height: 249px; left: 251.322px; top: 369px;" data-name="code-23467b" data-block-id="ccd6985db840033e7f9fe04e5080f682"><div class="sl-block-content notranslate fragment" data-highlight-theme="monokai-sublime" data-code-frame="none" style="z-index: 13;" data-fragment-index="1"><pre style="font-size: 25px; line-height: 30px;" class="json"><code data-line-numbers="">{
+    "name": "John",
+    "friendshipStatus": 2,
+    "spouse": {
+    	"name": "Mary", ...
+    },
+    "friends": []
+}</code></pre></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180.161px; top: 210px;" data-block-id="5576229b171fda81c8eeba6dac26b959" data-name="text-fcd8f3"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" dir="ui" data-fragment-index="0">
+<p><em>JavaScript Object Notation</em></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180.161px; top: 299px;" data-block-id="d1876d4f7b5fce4370a1afcff4c5e422" data-name="text-d43a8d"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;" dir="ui" data-fragment-index="1">
+<h3>Beispiel:</h3>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 240px; height: 46.6252px; left: 0px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-3623a7" data-block-id="afbfa2f3a6fdd223de2e8255c2b5e401"><div class="sl-block-style" style="z-index: 16; transform: rotate(0deg);"><div class="sl-block-content" style="z-index: 16;"><img style="" data-natural-width="803" data-natural-height="156" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/dcb36f396074a2615b6baa5b0514f311.png"></div></div></div></section><section data-id="ab8771717a5bd3de709133e777069c19">
+<div class="sl-block" data-block-type="image" style="width: 70px; height: 70px; left: 890px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-02649c" data-block-id="bb1deae9c9e04faa35841ea3953d7cd9"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="131" data-natural-height="131" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/03c6474b21322936b44adcd64b8fea6d.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 140px;" data-name="text-398508" data-block-id="a19ca0957624217c501b4954760ee479"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<h2>Datenformate 🔢</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180.161px; top: 101px;" data-name="text-5cd003" data-block-id="b08ed281d9549eea6450f3413af75685"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>3/5</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 806.399px; height: 323.217px; left: 0px; top: 376.783px; min-width: 1px; min-height: 1px;" data-name="image-2813e6" data-block-id="af13b3ea6eaeeac468e39ba743bac4a4"><a class="sl-block-content fragment" style="z-index: 13;" data-fragment-index="2" href="https://engineering.fb.com/2015/07/31/android/improving-facebook-s-performance-on-android-with-flatbuffers/" target="_blank"><img style="" data-natural-width="736" data-natural-height="295" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/3b4bb3cd34385164a36335b64ae230d3.jpg"></a></div>
+<div class="sl-block" data-block-type="shape" style="width: 125px; height: 67px; left: 66.039px; top: 492.783px;" data-name="shape-a81bc6" data-block-id="61ad3ebda2897017dd636a10f27761d0"><div class="sl-block-style" style="z-index: 14; opacity: 0.25;"><div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgb(255, 0, 0)" data-shape-stretch="true" style="z-index: 14;" data-fragment-index="3"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 125 67"><rect width="125" height="67" rx="0" ry="0" class="shape-element" fill="rgb(255, 0, 0)"></rect></svg></div></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 247px; height: 67px; left: 191.039px; top: 492.783px;" data-block-id="3ac36c36598e68c97ed14348aba6f430" data-name="shape-a1ae2a"><div class="sl-block-style" style="z-index: 15; opacity: 0.25;"><div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgb(74, 134, 232)" data-shape-stretch="true" style="z-index: 15;" data-fragment-index="3"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 247 67"><rect width="247" height="67" rx="0" ry="0" class="shape-element" fill="rgb(74, 134, 232)"></rect></svg></div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 280px;" data-name="text-7af487" data-block-id="fb7c4cb246e1d4aa1d0c0fb552c4322e"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;" dir="ui" data-fragment-index="1">
+<p><span style="font-size:0.7em">Programmiersprachen:<br>
+C++, C#, C, Go, Java, Kotlin, JavaScript, Lobster, Lua, TypeScript, PHP, Python, Rust und Swift</span></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180.161px; top: 210px;" data-name="text-fcd8f3" data-block-id="eb545d45c8112fe2688a0b3f21814e81"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17;" dir="ui" data-fragment-index="0">
+<p><em>FlatBuffers</em></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 240px; height: 46.6252px; left: 0px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-3623a7" data-block-id="9ac4f9aae67fb7bff4d197ecfea17033"><div class="sl-block-style" style="z-index: 18; transform: rotate(0deg);"><div class="sl-block-content" style="z-index: 18;"><img style="" data-natural-width="803" data-natural-height="156" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/dcb36f396074a2615b6baa5b0514f311.png"></div></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 125px; height: 67px; left: 438.039px; top: 493px;" data-block-id="61e95a01cb374489ea6ca3bbdf49630b" data-name="shape-55ac2c"><div class="sl-block-style" style="z-index: 19; opacity: 0.25;"><div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgb(255, 0, 0)" data-shape-stretch="true" style="z-index: 19;" data-fragment-index="3"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 125 67"><rect width="125" height="67" rx="0" ry="0" class="shape-element" fill="rgb(255, 0, 0)"></rect></svg></div></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 184px; height: 67px; left: 563.039px; top: 493px;" data-block-id="0513bfb2bc562c91d4ef3567f27b81aa" data-name="shape-5d5835"><div class="sl-block-style" style="z-index: 20; opacity: 0.25;"><div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgb(74, 134, 232)" data-shape-stretch="true" style="z-index: 20;" data-fragment-index="3"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 184 67"><rect width="184" height="67" rx="0" ry="0" class="shape-element" fill="rgb(74, 134, 232)"></rect></svg></div></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 25px; height: 25px; left: 806.399px; top: 603.5px;" data-block-id="6702c5484eaba6f82d0c0981af3f0b09" data-name="shape-72a334"><div class="sl-block-style" style="z-index: 21; opacity: 0.25;"><div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgb(255, 0, 0)" data-shape-stretch="true" style="z-index: 21;" data-fragment-index="3"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 25 25"><rect width="25" height="25" rx="0" ry="0" class="shape-element" fill="rgb(255, 0, 0)"></rect></svg></div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 94px; left: 842.399px; top: 601.5px;" data-name="text-9ab860" data-block-id="19297658bdd8481e67e6c42525a77463"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 22; text-align: left; font-size: 75%;" data-fragment-index="3">
+<p>vTable</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="width: 25px; height: 25px; left: 806.399px; top: 639.5px;" data-block-id="a381df1231e9601f38a8693e00877d5b" data-name="shape-8d1fc6"><div class="sl-block-style" style="z-index: 23; opacity: 0.25;"><div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgb(74, 134, 232)" data-shape-stretch="true" style="z-index: 23;" data-fragment-index="3"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 25 25"><rect width="25" height="25" rx="0" ry="0" class="shape-element" fill="rgb(74, 134, 232)"></rect></svg></div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 94px; left: 842.399px; top: 637.5px;" data-block-id="fd9aafc2baae6ad2b3158a0c1d231778" data-name="text-46bbdc"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 24; text-align: left; font-size: 75%;" data-fragment-index="3">
+<p>Daten</p>
+</div></div></section><section data-id="cb9ba505ada3ff2beb86a98914fc6bfe">
+<div class="sl-block" data-block-type="image" style="width: 70px; height: 70px; left: 890px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-02649c" data-block-id="05e9decd929a8fab007dbaf994a5429a"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="131" data-natural-height="131" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/03c6474b21322936b44adcd64b8fea6d.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 140px;" data-name="text-398508" data-block-id="cb2eb6595189e34dc43d3ea13a26f879"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; transition-duration: 0.6s;" data-animation-type="fade-in">
+<h2>Datenformate 🔢</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180.161px; top: 101px;" data-name="text-5cd003" data-block-id="d9a7c09b1eab15d7b03e0655944915a5"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; transition-duration: 0.6s;" data-animation-type="fade-in">
+<p>3/5</p>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 800px; height: 282px; left: 80px; top: 318px;" data-name="code-23467b" data-block-id="aa47cb3d82785abc90983342c18677cc"><div class="sl-block-content notranslate fragment" data-highlight-theme="monokai-sublime" data-code-frame="none" style="z-index: 13;" data-fragment-index="1"><pre style="font-size: 25px; line-height: 30px;" class="json"><code data-line-numbers="">namespace de.jonas_thelemann.uni.gosoan.generated;
+table GosoanSensorEventFB {
+    sensor_type:int;
+    sensor_name:string;
+    values:[float];
+    accuracy:int;
+    timestamp:long;
+}
+root_type GosoanSensorEventFB;</code></pre></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 264px;" data-name="text-fcd8f3" data-block-id="32b0960b57b4b1a56d7fac24eb027895"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" dir="ui" data-fragment-index="0">
+<p>Schemadefinition</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180.161px; top: 210px;" data-block-id="ce8a844e3be640efa4b1a9030d2d05f5" data-name="text-657695"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;" dir="ui">
+<p><em>FlatBuffers</em></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 240px; height: 46.6252px; left: 0px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-3623a7" data-block-id="b8b73b31540ca7c8689b30051e1eec79"><div class="sl-block-style" style="z-index: 16; transform: rotate(0deg);"><div class="sl-block-content" style="z-index: 16;"><img style="" data-natural-width="803" data-natural-height="156" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/dcb36f396074a2615b6baa5b0514f311.png"></div></div></div></section><section data-id="4fb09fe6e738d8e3b283c513505cd7b6">
+<div class="sl-block" data-block-type="image" style="width: 70px; height: 70px; left: 890px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-02649c" data-block-id="75c503ab812c6448a0a580fb7509fffe"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="131" data-natural-height="131" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/03c6474b21322936b44adcd64b8fea6d.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 140px;" data-name="text-398508" data-block-id="b4a57ecb9c4dc09273dabd3f70673623"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<h2>Datenformate 🔢</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180.161px; top: 101px;" data-name="text-5cd003" data-block-id="b63ecf44989248d8b457529b75ee6f09"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>3/5</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 139px; height: 139px; left: 688px; top: 350px; min-width: 1px; min-height: 1px;" data-name="image-5a7af2" data-block-id="231fba044e216b5b8b260b9f1dd63839"><a class="sl-block-content fragment" style="z-index: 13;" data-fragment-index="1" href="https://images.app.goo.gl/dETWw5ppabADAsEv8" target="_blank"><img style="" data-natural-width="1024" data-natural-height="1024" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/be0c560dec1af75ead3992b7d21601bf.png"></a></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 265px; left: 625px; top: 495.5px;" data-name="text-be477f" data-block-id="a7127d3423e9c927011e53ee233481e2"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; line-height: 0.949;" data-has-line-height="" data-fragment-index="1">
+<p>github.com/</p>
+
+<p>google/flatbuffers</p>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 431px; height: 100.5px; left: 35.919px; top: 404.5px;" data-name="code-c438e3" data-block-id="47d7c425fd5881e4800d041ac70b6754"><div class="sl-block-content notranslate fragment" data-highlight-theme="monokai-sublime" data-code-frame="none" style="z-index: 15;" data-fragment-index="0"><pre class="bash" style="font-size: 25px; line-height: 30px;"><code data-line-numbers="">flatc --kotlin \
+    -o &lt;path&gt; \
+    gosoanSensorEvent.fbs</code></pre></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 491.58px; top: 427.5px;" data-name="line-27ac39" data-block-id="a801e7b6dc2221b12af6063cc439cb1b"><div class="sl-block-content fragment" data-line-x1="159.839" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#000000" data-line-start-type="none" data-line-end-type="line-arrow" style="z-index: 16;" data-line-width="4px" data-fragment-index="2"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="159.839" height="1" viewbox="0 0 159.839 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="159.839" y1="0" x2="3" y2="0"></line><line class="line-element" stroke="#000000" stroke-width="4" x1="159.839" y1="0" x2="3" y2="0"></line><path style="fill: rgba(0,0,0,0);" stroke="#000000" stroke-width="4" transform="translate(3,0) rotate(270)" d="M 9 9 L 0 0 L -9 9"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 93px; left: 532px; top: 384.75px;" data-name="text-c22439" data-block-id="f19c98bdf89acf84640f4092f082eb43"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17;" data-fragment-index="2">
+<p>make</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 431px; left: 35.919px; top: 350px;" data-name="text-fcd8f3" data-block-id="2a305ef5a174b9f28a72aba5f501dd56"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18;" dir="ui" data-fragment-index="0">
+<p>Schema-Kompilation</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180.161px; top: 210px;" data-name="text-657695" data-block-id="7fddaf2c12a5585da2386968f53bdb82"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19;" dir="ui">
+<p><em>FlatBuffers</em></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 240px; height: 46.6252px; left: 0px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-3623a7" data-block-id="9d16ac843e96c23e14e415a9a82389a5"><div class="sl-block-style" style="z-index: 20; transform: rotate(0deg);"><div class="sl-block-content" style="z-index: 20;"><img style="" data-natural-width="803" data-natural-height="156" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/dcb36f396074a2615b6baa5b0514f311.png"></div></div></div></section><section data-id="c5f9d4eb81bafb2777e9a7b540cba247">
+<div class="sl-block" data-block-type="image" style="width: 70px; height: 70px; left: 890px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-02649c" data-block-id="2b44b144c21e3e9e9a61a2c5f51e5db4"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="131" data-natural-height="131" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/03c6474b21322936b44adcd64b8fea6d.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 140px;" data-name="text-398508" data-block-id="8f9b8c0b4a862ae280758c1a55963dae"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<h2>Datenformate 🔢</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180.161px; top: 101px;" data-name="text-5cd003" data-block-id="b115d7089e2111a217beda5560e05080"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>3/5</p>
+</div></div>
+
+
+<div class="sl-block" data-block-type="code" style="width: 960px; height: 412.5px; left: 0px; top: 287.5px;" data-name="code-c438e3" data-block-id="9ccf227852aa616ecdfb7538c370531c"><div class="sl-block-content notranslate" data-highlight-theme="monokai-sublime" data-code-frame="none" style="z-index: 15;"><pre class="bash" style="font-size: 17px; line-height: 20px;"><code data-line-numbers="">// automatically generated by the FlatBuffers compiler, do not modify
+
+package de.jonas_thelemann.uni.gosoan.generated
+
+import java.nio.*
+import kotlin.math.sign
+import com.google.flatbuffers.*
+
+@Suppress("unused")
+@ExperimentalUnsignedTypes
+class GosoanSensorEventFB : Table() {
+
+    fun __init(_i: Int, _bb: ByteBuffer)  {
+        __reset(_i, _bb)
+    }
+    fun __assign(_i: Int, _bb: ByteBuffer) : GosoanSensorEventFB {
+        __init(_i, _bb)
+        return this
+    }
+    val sensorType : Int
+        get() {
+            val o = __offset(4)
+            return if(o != 0) bb.getInt(o + bb_pos) else 0
+        }
+    val sensorName : String?
+        get() {
+            val o = __offset(6)
+            return if (o != 0) __string(o + bb_pos) else null
+        }
+    val sensorNameAsByteBuffer : ByteBuffer get() = __vector_as_bytebuffer(6, 1)
+    fun sensorNameInByteBuffer(_bb: ByteBuffer) : ByteBuffer = __vector_in_bytebuffer(_bb, 6, 1)
+    fun values(j: Int) : Float {
+        val o = __offset(8)
+        return if (o != 0) {
+            bb.getFloat(__vector(o) + j * 4)
+        } else {
+            0.0f
+        }
+    }
+    val valuesLength : Int
+        get() {
+            val o = __offset(8); return if (o != 0) __vector_len(o) else 0
+        }
+    val valuesAsByteBuffer : ByteBuffer get() = __vector_as_bytebuffer(8, 4)
+    fun valuesInByteBuffer(_bb: ByteBuffer) : ByteBuffer = __vector_in_bytebuffer(_bb, 8, 4)
+    val accuracy : Int
+        get() {
+            val o = __offset(10)
+            return if(o != 0) bb.getInt(o + bb_pos) else 0
+        }
+    val timestamp : Long
+        get() {
+            val o = __offset(12)
+            return if(o != 0) bb.getLong(o + bb_pos) else 0L
+        }
+    companion object {
+        fun validateVersion() = Constants.FLATBUFFERS_1_12_0()
+        fun getRootAsGosoanSensorEventFB(_bb: ByteBuffer): GosoanSensorEventFB = getRootAsGosoanSensorEventFB(_bb, GosoanSensorEventFB())
+        fun getRootAsGosoanSensorEventFB(_bb: ByteBuffer, obj: GosoanSensorEventFB): GosoanSensorEventFB {
+            _bb.order(ByteOrder.LITTLE_ENDIAN)
+            return (obj.__assign(_bb.getInt(_bb.position()) + _bb.position(), _bb))
+        }
+        fun createGosoanSensorEventFB(builder: FlatBufferBuilder, sensorType: Int, sensorNameOffset: Int, valuesOffset: Int, accuracy: Int, timestamp: Long) : Int {
+            builder.startTable(5)
+            addTimestamp(builder, timestamp)
+            addAccuracy(builder, accuracy)
+            addValues(builder, valuesOffset)
+            addSensorName(builder, sensorNameOffset)
+            addSensorType(builder, sensorType)
+            return endGosoanSensorEventFB(builder)
+        }
+        fun startGosoanSensorEventFB(builder: FlatBufferBuilder) = builder.startTable(5)
+        fun addSensorType(builder: FlatBufferBuilder, sensorType: Int) = builder.addInt(0, sensorType, 0)
+        fun addSensorName(builder: FlatBufferBuilder, sensorName: Int) = builder.addOffset(1, sensorName, 0)
+        fun addValues(builder: FlatBufferBuilder, values: Int) = builder.addOffset(2, values, 0)
+        fun createValuesVector(builder: FlatBufferBuilder, data: FloatArray) : Int {
+            builder.startVector(4, data.size, 4)
+            for (i in data.size - 1 downTo 0) {
+                builder.addFloat(data[i])
+            }
+            return builder.endVector()
+        }
+        fun startValuesVector(builder: FlatBufferBuilder, numElems: Int) = builder.startVector(4, numElems, 4)
+        fun addAccuracy(builder: FlatBufferBuilder, accuracy: Int) = builder.addInt(3, accuracy, 0)
+        fun addTimestamp(builder: FlatBufferBuilder, timestamp: Long) = builder.addLong(4, timestamp, 0L)
+        fun endGosoanSensorEventFB(builder: FlatBufferBuilder) : Int {
+            val o = builder.endTable()
+            return o
+        }
+        fun finishGosoanSensorEventFBBuffer(builder: FlatBufferBuilder, offset: Int) = builder.finish(offset)
+        fun finishSizePrefixedGosoanSensorEventFBBuffer(builder: FlatBufferBuilder, offset: Int) = builder.finishSizePrefixed(offset)
+    }
+}
+</code></pre></div></div>
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180.161px; top: 210px;" data-name="text-657695" data-block-id="b9ad8c2d7088418a05f472c5f3a09ed2"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19;" dir="ui">
+<p><em>FlatBuffers</em></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 240px; height: 46.6252px; left: 0px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-3623a7" data-block-id="5cd9ef631229af3e9ac8f478ca9963c4"><div class="sl-block-style" style="z-index: 20; transform: rotate(0deg);"><div class="sl-block-content" style="z-index: 20;"><img style="" data-natural-width="803" data-natural-height="156" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/dcb36f396074a2615b6baa5b0514f311.png"></div></div></div></section><section data-id="e8c9b59a46633b808db279be94ae8a0d">
+<div class="sl-block" data-block-type="image" style="width: 70px; height: 70px; left: 890px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-02649c" data-block-id="1d124052457c91dbf71d4c73b762ac80"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="131" data-natural-height="131" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/03c6474b21322936b44adcd64b8fea6d.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 140px;" data-name="text-398508" data-block-id="7dd5ff1ea0f0cf9d95e7414e288cfdc1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<h2>Datenformate 🔢</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180.161px; top: 101px;" data-name="text-5cd003" data-block-id="a37689a218c8049ec0b5d7aaa5d00275"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>3/5</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 480px; left: 0px; top: 350px;" data-name="text-38cbe4" data-block-id="b758f71ce0f0888db17e7d1f04958499"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; line-height: 1.95;" data-has-line-height="">
+<ul>
+	<li class="fragment" data-fragment-index="1">geringe RAM-Auslastung</li>
+	<li class="fragment" data-fragment-index="2">keine garbage collection</li>
+	<li class="fragment" data-fragment-index="3">Migrationsmöglichkeiten</li>
+	<li class="fragment" data-fragment-index="4">Datensparsamkeit</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 240px; left: 140px; top: 280px;" data-name="text-60182f" data-block-id="49974b481178963a46351567d03f5970"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" data-fragment-index="0">
+<h3>Features:</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 480px; left: 480px; top: 451px;" data-block-id="6f6914b3387b907d9c9862f2af1b30c7" data-name="text-8700e7"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<ul>
+	<li class="fragment" data-fragment-index="6">keine bounds checks<span> </span>💔<span> </span>
+</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 240px; left: 620px; top: 381px;" data-block-id="f04d524f815652c178c7b02f4a0e17f0" data-name="text-39fe31"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;" data-fragment-index="5">
+<h3>Kritik:</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180.161px; top: 210px;" data-name="text-657695" data-block-id="756825a12e1e5713387ce2e9a3ec7c55"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17;" dir="ui">
+<p><em>FlatBuffers</em></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 240px; height: 46.6252px; left: 0px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-3623a7" data-block-id="8053ccd78d1192efb915eda20e1d7a44"><div class="sl-block-style" style="z-index: 18; transform: rotate(0deg);"><div class="sl-block-content" style="z-index: 18;"><img style="" data-natural-width="803" data-natural-height="156" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/dcb36f396074a2615b6baa5b0514f311.png"></div></div></div></section></section><section class="stack" data-id="97df1c33af3d2ea75ae35a319b5c1ce2"><section data-id="83d5f70e8910b691d627f189200e21fd">
+<div class="sl-block" data-block-type="image" style="width: 70px; height: 70px; left: 890px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-02649c" data-block-id="47b86fe96f5f0aaefbdcbe9e109cf46b"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="131" data-natural-height="131" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/03c6474b21322936b44adcd64b8fea6d.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 640px; left: 160px; top: 140px;" data-name="text-398508" data-block-id="abf296739b5a822f2a14dc41364c8efe"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; transition-duration: 0.6s;" data-animation-type="fade-in">
+<h2>Datenübertragung 🔌</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180.161px; top: 101px;" data-name="text-5cd003" data-block-id="ee8be636f8c08262489ab92c7891e7f7"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; transition-duration: 0.6s;" data-animation-type="fade-in">
+<p>4/5</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 960px; height: 221.905px; left: 0px; top: 350px; min-width: 1px; min-height: 1px;" data-name="image-9653ca" data-block-id="c0585e7e89c6dda6231c5179af789440"><div class="sl-block-content fragment" style="z-index: 14;" data-fragment-index="1"><img style="" data-natural-width="1008" data-natural-height="233" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/9ff01713cdae3d096865fa7ade36b35d.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 571.905px;" data-name="text-813446" data-block-id="d54d01405bcb6ba0d56707bbd6c64537"><a class="sl-block-style" style="z-index: 15;" href="https://de.wikipedia.org/wiki/Internetprotokollfamilie" target="_blank"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; font-size: 50%;" dir="ui" data-fragment-index="1">
+<p>https://de.wikipedia.org/wiki/Internetprotokollfamilie</p>
+</div></a></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 303px;" data-name="text-795ce2" data-block-id="c689bfe2623c24b447a61708d0117264"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;" data-fragment-index="1">
+<p>Referenzmodelle</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 214px;" data-name="text-06a1b5" data-block-id="530fb414bcc11e0fab987abd6759e361"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17;" dir="ui" data-fragment-index="0">
+<p><em>WebSockets: RFC6455, 2011</em></p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="width: 480px; height: 46px; left: 240px; top: 214px;" data-name="shape-132426" data-block-id="0d14d7c6740a07835b11b68db7592909"><div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgb(255, 203, 203)" data-shape-stretch="true" style="z-index: 10;" data-fragment-index="2"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 480 46"><rect width="480" height="46" rx="0" ry="0" class="shape-element" fill="rgb(255, 203, 203)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="image" style="width: 240px; height: 46.6252px; left: 0px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-3623a7" data-block-id="292f7795fa4ede7d5a97f9bebc6ed511"><div class="sl-block-style" style="z-index: 18; transform: rotate(0deg);"><div class="sl-block-content" style="z-index: 18;"><img style="" data-natural-width="803" data-natural-height="156" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/dcb36f396074a2615b6baa5b0514f311.png"></div></div></div></section><section data-id="18e38e337b0b8d540853b47c0a117ff5">
+<div class="sl-block" data-block-type="image" style="width: 70px; height: 70px; left: 890px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-02649c" data-block-id="ebebe04949d2ab4467f30acc7912fe40"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="131" data-natural-height="131" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/03c6474b21322936b44adcd64b8fea6d.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180.161px; top: 101px;" data-name="text-5cd003" data-block-id="5d54e6efcaaa8127fc9577b09a373493"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>4/5</p>
+</div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 214px;" data-name="text-06a1b5" data-block-id="ab14586eed7aeb643650322ee1255f6e"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;" dir="ui" data-fragment-index="0">
+<p><em>WebSockets: Alternativen</em></p>
+</div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 560px; top: 280px;" data-name="line-ab2783" data-block-id="edcb2da9c5a8f4fbcbe6b21e45acaa01"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="350" data-line-x2="0" data-line-y2="0" data-line-color="#000000" data-line-start-type="none" data-line-end-type="line-arrow" style="z-index: 14;" data-line-width="10px" data-fragment-index="2"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="350" viewbox="0 0 1 350"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="350" x2="0" y2="7.5"></line><line class="line-element" stroke="#000000" stroke-width="10" x1="0" y1="350" x2="0" y2="7.5"></line><path style="fill: rgba(0,0,0,0);" stroke="#000000" stroke-width="10" transform="translate(0,7.5) rotate(0)" d="M 22.5 22.5 L 0 0 L -22.5 22.5"></path></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 400px; top: 282.5px;" data-block-id="411cdd59c44e82de093ff54b11db5b9a" data-name="line-fe1217"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="0" data-line-x2="0" data-line-y2="350" data-line-color="#000000" data-line-start-type="none" data-line-end-type="line-arrow" style="z-index: 15;" data-line-width="10px" data-fragment-index="1"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="350" viewbox="0 0 1 350"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="0" y2="342.5"></line><line class="line-element" stroke="#000000" stroke-width="10" x1="0" y1="0" x2="0" y2="342.5"></line><path style="fill: rgba(0,0,0,0);" stroke="#000000" stroke-width="10" transform="translate(0,342.5) rotate(180)" d="M 22.5 22.5 L 0 0 L -22.5 22.5"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 202px; left: 198px; top: 420px;" data-name="text-e3104f" data-block-id="086900697c82490ca8d40594af0ce10e"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;" data-fragment-index="1">
+<p><strong>TCP, UDP?</strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 202px; left: 560px; top: 420px;" data-block-id="3dd503865a312f41e6491ac6c6964ddd" data-name="text-1efec8"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17;" data-fragment-index="2">
+<p><strong>HTTP/3? </strong>👀</p>
+</div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 640px; left: 160px; top: 140px;" data-name="text-398508" data-block-id="2d2388d38a0a9772fbaa0fe8730bb796"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18;">
+<h2>Datenübertragung 🔌</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 240px; height: 46.6252px; left: 0px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-3623a7" data-block-id="27b73e8286e556d8474973384400d8f2"><div class="sl-block-style" style="z-index: 19; transform: rotate(0deg);"><div class="sl-block-content" style="z-index: 19;"><img style="" data-natural-width="803" data-natural-height="156" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/dcb36f396074a2615b6baa5b0514f311.png"></div></div></div></section></section><section class="stack" data-id="93f04aa62665e50bcce82efd9d5de15c"><section data-id="674fe577569b7837617e1d1b71c7f88d">
+<div class="sl-block" data-block-type="image" style="width: 70px; height: 70px; left: 890px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-02649c" data-block-id="b465c4e47ee72ce6d1cdab8afac758b8"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="131" data-natural-height="131" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/03c6474b21322936b44adcd64b8fea6d.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 140px;" data-name="text-398508" data-block-id="ca83be977227c3a7492e6ac43772854c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<h2>Ergebnisse 📊</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180.161px; top: 101px;" data-name="text-5cd003" data-block-id="0659993f04fbf660c498906be54d7840"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; transition-duration: 0.6s;" data-animation-type="fade-in">
+<p>5/5</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 240px; height: 46.6252px; left: 0px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-3623a7" data-block-id="e18f104c53a67023614e672578d05f39"><div class="sl-block-style" style="z-index: 13; transform: rotate(0deg);"><div class="sl-block-content" style="z-index: 13;"><img style="" data-natural-width="803" data-natural-height="156" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/dcb36f396074a2615b6baa5b0514f311.png"></div></div></div></section><section data-id="1835a71ee30a99b438eea46da2781426">
+<div class="sl-block" data-block-type="image" style="width: 70px; height: 70px; left: 890px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-02649c" data-block-id="4788c8f9ab03cfb9a5994248bb647bb1"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="131" data-natural-height="131" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/03c6474b21322936b44adcd64b8fea6d.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 140px;" data-name="text-398508" data-block-id="f61f86dd2b46cc202746ef583f516c89"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<h2>Ergebnisse 📊</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180.161px; top: 101px;" data-name="text-5cd003" data-block-id="035dce328bcc29219b9cd6dce2e5d6ba"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; transition-duration: 0.6s;" data-animation-type="fade-in">
+<p>5/5</p>
+</div></div>
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 205px; left: 0px; top: 365.26px;" data-name="text-249ed9" data-block-id="a361848ffb5329d0ed6d8b30237f2839"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; text-align: right; font-size: 75%;" data-fragment-index="0">
+<p><strong>Serialisierung</strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 205px; left: 0px; top: 580.501px;" data-name="text-4b4be7" data-block-id="3d4fe6c254c46fc4a6b823a35db65c37"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; text-align: right; font-size: 75%;" data-fragment-index="1">
+<p><strong>Deserialisierung</strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180.161px; top: 214px;" data-name="text-198630" data-block-id="ba75e8fcc60da4b292b1427b43f38528"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p><em>JSON vs. FlatBuffers</em></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 240px; height: 46.6252px; left: 0px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-3623a7" data-block-id="052d4955b5470ec86cd81c894c581908"><div class="sl-block-style" style="z-index: 16; transform: rotate(0deg);"><div class="sl-block-content" style="z-index: 16;"><img style="" data-natural-width="803" data-natural-height="156" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/dcb36f396074a2615b6baa5b0514f311.png"></div></div></div>
+<div class="sl-block" data-block-type="image" style="width: 374.286px; height: 210.481px; left: 240px; top: 279.519px; min-width: 1px; min-height: 1px;" data-name="image-d7133a" data-block-id="7a9e8425ed24f90032456d9c728ba1c2"><div class="sl-block-content fragment" style="z-index: 17;" data-fragment-index="0"><img style="" data-natural-width="425" data-natural-height="239" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/10d16c999d4e24b21d9d5b0aa9ab7ed6.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 345.714px; height: 194.312px; left: 614.286px; top: 287.604px; min-width: 1px; min-height: 1px;" data-name="image-132dab" data-block-id="6c9d70c6efb38b324687f2bfa92307f3"><div class="sl-block-content fragment" style="z-index: 18;" data-fragment-index="0"><img style="" data-natural-width="427" data-natural-height="240" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/baebffb07afef725da800eb4a86cdbaa.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 374.118px; height: 210px; left: 240.168px; top: 490.001px; min-width: 1px; min-height: 1px;" data-name="image-b2d904" data-block-id="17744544e5d61d270be3bd51889a1562"><div class="sl-block-content fragment" style="z-index: 19;" data-fragment-index="1"><img style="" data-natural-width="424" data-natural-height="238" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/7b1a5a0346cc23a8b0016eaaab2e909f.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 345.714px; height: 194.413px; left: 614.286px; top: 497.795px; min-width: 1px; min-height: 1px;" data-name="image-e7e593" data-block-id="489f6eaf2132b92c7569537132b9bed7"><div class="sl-block-content fragment" style="z-index: 20;" data-fragment-index="1"><img style="" data-natural-width="425" data-natural-height="239" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/69e9e19edb87c9fdef6eaf98ab038eaf.png"></div></div></section><section data-id="ab767c001bf8ce636d7430c9761086ab">
+<div class="sl-block" data-block-type="image" style="width: 70px; height: 70px; left: 890px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-02649c" data-block-id="d055831f5c0e89c79cc55ca9d565b43c"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="131" data-natural-height="131" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/03c6474b21322936b44adcd64b8fea6d.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 140px;" data-name="text-398508" data-block-id="c228afe4d78d90ff4b8597d469fa8485"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<h2>Ergebnisse 📊</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180.161px; top: 101px;" data-name="text-5cd003" data-block-id="790c26f901643647d31f66a73d57059b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>5/5</p>
+</div></div>
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 203px; left: 0px; top: 440.5px;" data-name="text-249ed9" data-block-id="eed4778f77948695319e4357273ac928"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; text-align: right; font-size: 75%;" data-fragment-index="0">
+<p><strong>Dateigröße</strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180.161px; top: 214px;" data-name="text-198630" data-block-id="35496619708e7ea61e90133cf04363e5"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p><em>JSON vs. FlatBuffers</em></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 240px; height: 46.6252px; left: 0px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-3623a7" data-block-id="ea7e7f8cfcfb97f80434564a5b439923"><div class="sl-block-style" style="z-index: 15; transform: rotate(0deg);"><div class="sl-block-content" style="z-index: 15;"><img style="" data-natural-width="803" data-natural-height="156" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/dcb36f396074a2615b6baa5b0514f311.png"></div></div></div>
+<div class="sl-block" data-block-type="image" style="width: 373.625px; height: 210px; left: 240px; top: 350px; min-width: 1px; min-height: 1px;" data-name="image-1ed49e" data-block-id="44700ccb234d6e078c919b6de045a253"><div class="sl-block-content fragment" style="z-index: 16;" data-fragment-index="0"><img style="" data-natural-width="427" data-natural-height="240" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/cc712c9c7cee3eddae00c61a16cc111a.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 346.375px; height: 194.584px; left: 613.625px; top: 357.708px; min-width: 1px; min-height: 1px;" data-name="image-a347e8" data-block-id="28ab54cbb3bcef9a4485e9cb1478a09d"><div class="sl-block-content fragment" style="z-index: 17;" data-fragment-index="0"><img style="" data-natural-width="429" data-natural-height="241" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/66d3642fe137f6d0d21d82b5b0308cbe.png"></div></div></section><section data-id="66a59a4582b61241c615b355ae5ad44e">
+<div class="sl-block" data-block-type="image" style="width: 70px; height: 70px; left: 890px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-02649c" data-block-id="ba78fb130c6efb792bedc65ff2898131"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="131" data-natural-height="131" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/03c6474b21322936b44adcd64b8fea6d.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 140px;" data-name="text-398508" data-block-id="a0fb6a4717957436490a8aa4b8173901"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<h2>Ergebnisse 📊</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180.161px; top: 101px;" data-name="text-5cd003" data-block-id="529693e628fa9a242b906463a2b8abcc"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>5/5</p>
+</div></div>
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 206.161px; left: 0px; top: 335.5px;" data-name="text-249ed9" data-block-id="5510529adae0ed569a0a40c39d1c3c3c"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; text-align: right; font-size: 75%;" data-fragment-index="1">
+<p><strong>Versand,<br>
+JSON</strong></p>
+</div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 206.161px; left: 0px; top: 535px;" data-block-id="8eb49db185767b233edfc4aadd491481" data-name="text-3a5d18"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; text-align: right; font-size: 75%;" data-fragment-index="1">
+<p><strong>Versand, FlatBuffers</strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180.161px; top: 214px;" data-name="text-198630" data-block-id="68fdd4a2b216e06f50956daff71ef029"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;" data-fragment-index="0">
+<p><em>WebSocket vs. TCP</em></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 240px; height: 46.6252px; left: 0px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-3623a7" data-block-id="f144285ac767cdd07de59c54d5bfdf73"><div class="sl-block-style" style="z-index: 16; transform: rotate(0deg);"><div class="sl-block-content" style="z-index: 16;"><img style="" data-natural-width="803" data-natural-height="156" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/dcb36f396074a2615b6baa5b0514f311.png"></div></div></div>
+<div class="sl-block" data-block-type="image" style="width: 374.31px; height: 210px; left: 240px; top: 280px; min-width: 1px; min-height: 1px;" data-name="image-73f13b" data-block-id="d4faebf1f4ce19ad742b188d457704d3"><div class="sl-block-content fragment" style="z-index: 17;" data-fragment-index="1"><img style="left: 0px; top: 0px; width: 374px; height: 210px;" data-natural-width="426" data-natural-height="239" data-lazy-loaded="" data-crop-x="0" data-crop-y="0.000001" data-crop-width="1" data-crop-height="0.999999" data-src="effiziente-ubertragung-von-android-sensordaten/2b592e2e8f079375eb45662c8200130d.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 345.69px; height: 194.4px; left: 614.31px; top: 287.801px; min-width: 1px; min-height: 1px;" data-name="image-b7a4aa" data-block-id="7dbe7523ef821fcf5f499a61d7075cfe"><div class="sl-block-content fragment" style="z-index: 18;" data-fragment-index="1"><img style="" data-natural-width="425" data-natural-height="239" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/a286a759fad065134604b227e72ec9a5.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 373.038px; height: 210px; left: 240px; top: 490px; min-width: 1px; min-height: 1px;" data-name="image-a09637" data-block-id="2ea741635d1a8876af04d6cd2e6d5038"><div class="sl-block-content fragment" style="z-index: 19;" data-fragment-index="1"><img style="" data-natural-width="421" data-natural-height="237" data-lazy-loaded="" data-crop-x="0" data-crop-y="0" data-crop-width="1" data-crop-height="1" data-src="effiziente-ubertragung-von-android-sensordaten/925beb38434b301a17f237a2104dc14c.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 345.69px; height: 194.299px; left: 614.31px; top: 496.851px; min-width: 1px; min-height: 1px;" data-name="image-c59528" data-block-id="c7aee9686621875b563545683469f130"><div class="sl-block-content fragment" style="z-index: 20;" data-fragment-index="1"><img style="" data-natural-width="427" data-natural-height="240" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/31f08733c015fc58e2c53628e013bed1.png"></div></div></section></section><section data-id="8af9e51a49491b7c8b3895051fcc6cfb" data-background-image="effiziente-ubertragung-von-android-sensordaten/0c81769382a4703a7cfa4cc5f17d3ebc">
+
+
+
+
+
+
+</section><section data-id="730de1bcc58cb3797c21b6fee36c7800">
+<div class="sl-block" data-block-type="image" style="width: 70px; height: 70px; left: 890px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-02649c" data-block-id="4d1af4a6eb6c36253e574308a2401681"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="131" data-natural-height="131" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/03c6474b21322936b44adcd64b8fea6d.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180.161px; top: 101px;" data-name="text-5cd003" data-block-id="a9e65e0563a82d8d86362ff4648a1f1a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>4/5</p>
+</div></div>
+
+<div class="sl-block" data-block-type="code" style="width: 721px; height: 212px; left: 183px; top: 301px;" data-name="code-2ae057" data-block-id="3156470fc2979a4026929ec6be9e237e"><div class="sl-block-content notranslate fragment" data-highlight-theme="monokai-sublime" data-code-frame="none" style="z-index: 13;" data-fragment-index="1"><pre class="http" style="font-size: 20px; line-height: 24px;"><code data-line-numbers="">GET /chat HTTP/1.1
+Host: server.example.com
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==
+Origin: http://example.com
+Sec-WebSocket-Protocol: chat, superchat
+Sec-WebSocket-Version: 13</code></pre></div></div>
+<div class="sl-block" data-block-type="code" style="width: 721px; height: 145px; left: 183px; top: 534px;" data-block-id="14e5d9a0a93ab3fa45b8c4484d68c3bc" data-name="code-0632d4"><div class="sl-block-content notranslate fragment" data-highlight-theme="monokai-sublime" data-code-frame="none" style="z-index: 14;" data-fragment-index="2"><pre class="http" style="font-size: 20px; line-height: 24px;"><code data-line-numbers="">HTTP/1.1 101 Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=
+Sec-WebSocket-Protocol: chat</code></pre></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 160px; left: 24px; top: 388.5px;" data-name="text-992aba" data-block-id="fbe0d6bb8577412f94116ce0ea91c6b6"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;" data-fragment-index="1">
+<p>Anfrage</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 160px; left: 23px; top: 587px;" data-block-id="90a4ad59467d0f7986c0f67fa7b84f27" data-name="text-f40b19"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;" data-fragment-index="2">
+<p>Antwort</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 214px;" data-name="text-06a1b5" data-block-id="46613c31693ac6a22472714984a208ba"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17;" dir="ui" data-fragment-index="0">
+<p><em>WebSockets: HTTP-Upgrade</em></p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="width: 480px; height: 46px; left: 240px; top: 214px;" data-block-id="7fa7af832a96dc87853df20ed2920d54" data-name="shape-1cd00e"><div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgb(255, 203, 203)" data-shape-stretch="true" style="z-index: 10;" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 480 46"><rect width="480" height="46" rx="0" ry="0" class="shape-element" fill="rgb(255, 203, 203)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 640px; left: 160px; top: 140px;" data-name="text-398508" data-block-id="a37bdd616e637be232289ad0b7f6de4d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18;">
+<h2>Datenübertragung 🔌</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 240px; height: 46.6252px; left: 0px; top: 0px; min-width: 1px; min-height: 1px;" data-name="image-3623a7" data-block-id="a25ff89113b6d32973a05de300914571"><div class="sl-block-style" style="z-index: 19; transform: rotate(0deg);"><div class="sl-block-content" style="z-index: 19;"><img style="" data-natural-width="803" data-natural-height="156" data-lazy-loaded="" data-src="effiziente-ubertragung-von-android-sensordaten/dcb36f396074a2615b6baa5b0514f311.png"></div></div></div></section>
+			</div>
+		</div>
+
+		<script>
+			var SLConfig = {"deck": {"id":2134127,"slug":"effiziente-ubertragung-von-android-sensordaten","title":"Effiziente Übertragungvon Android Sensordaten","description":"","width":960,"height":700,"margin":0.05,"visibility":"all","published_at":"2021-05-25T23:32:21.379Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/8bad60c57c37fe7ff4032802713b944c/thumb.jpg?1622140355","view_count":1,"user":{"id":1142422,"username":"dargmuesli","name":"Jonas Thelemann","description":"","thumbnail_url":"https://www.gravatar.com/avatar/632fa3870b8c01d361cf16615526654b?s=140\u0026d=https%3A%2F%2Fstatic.slid.es%2Fimages%2Fdefault-profile-picture.png","account_type":"lite","team_id":null,"settings":{"id":3934566,"present_controls":true,"present_upsizing":false,"present_pointer":true,"present_notes":true,"default_deck_tag_id":null}},"background_transition":"fade","transition":"fade","theme_id":null,"theme_font":"montserrat","theme_color":"white-blue","auto_slide_interval":0,"comments_enabled":true,"forking_enabled":true,"rolling_links":false,"center":false,"shuffle":false,"should_loop":false,"share_notes":false,"slide_number":true,"slide_count":26,"rtl":false,"version":2,"collaborative":null,"deck_user_editor_limit":1,"data_updated_at":1622142189046,"font_typekit":null,"font_google":null,"time_limit":15,"navigation_mode":"default","upsizing_enabled":true,"notes":{"0ca2467849be562883db5d85f816b981":"Framework: Jetpack (MVVM)\n\nLocation Framework: extra \"Sensor\"\n\nSensorliste\n-\u003e suchbar\n-\u003e aktivierbar / einzeln konfigurierbar\n\nDarkmode\nMenü\n-\u003e Sensorliste\n-\u003e Netzwerkinterfaces\n-\u003e Globale Einstellungen","27b44e1892f6235b5a989d988e7dca0d":"Einstellungen pro Sensor \u0026 global\n-\u003e Aktivität\n-\u003e Messfrequenz\n-\u003e Server IP\n-\u003e Datenformat\n-\u003e Übertragungsmethode\n\nVordergrund\n-\u003e durch Benachrichtigung bei Aktivität","9193bfe5e2fad3a9e36b79289130f01a":"Netzwerkinterface-Liste mit Fehlerresilienz\n-\u003e Warteschlange\n-\u003e Zähler","94333d575dd92ae0acc04f5275f3df1a":"Serialisierung: Abbildung von strukturierten Daten auf eine sequenzielle Darstellungsform\n-\u003e Speicherung von Objekten in Dateien\n-\u003e Übertragung von Objekten über das Netzwerk\n\nJSON: Map","ab8771717a5bd3de709133e777069c19":"Serialisierungsbibliothek von Google\n-\u003e Binärpuffer\n\u003cBeispiel\u003e\n\nPivot Points","e8c9b59a46633b808db279be94ae8a0d":"-\u003e vorher bekanntes Format\n  -\u003e wenig RAM-Auslastung durch Parsen\n  -\u003e keine garbace collection\n-\u003e optionale Felder\n  -\u003e Migrationsmöglichkeit\n  -\u003e Datensparsamkeit\n\n-\u003e keine bounds checks: Heartbleed\n","ae246f145a84954a6eef2dbd1246550a":"Google:\n-\u003e Ladezeiten von Stories aus dem Cache von 35 ms auf 4 ms\n-\u003e Arbeitsspeichernutzung um 75 %\n-\u003e Kaltstartzeit um 10-15 %\n-\u003e Hauptspeichernutzung um 15 % reduziert haben zu können\n\nIch:\n-\u003e Zufallsdaten im Format der Sensordaten generiert (mit Seed)\n-\u003e 100k vs 200k","ec586e4f614bbb09cdd2786bc89ecb89":"","2eb91ca9d27ca8df37cb2f85508f5f0e":"","674fe577569b7837617e1d1b71c7f88d":"-\u003e 100k \u0026 200k Datensätze\n-\u003e Zufallsgeneriert mit Seed, echtes Format\n-\u003e Mittelwerte","5fc67195ab3670fcd004ff7bd09bc2bc":"","ab767c001bf8ce636d7430c9761086ab":"=\u003e FlatBuffers spart 1/4 der Dateigröße von JSON-Daten.","66a59a4582b61241c615b355ae5ad44e":"Ausblick!\n\n-\u003e Vorab: Datensätze werden generiert, Interfaces gestartet\n-\u003e Zeitmessung des Versendens in ms\n\n=\u003e WebSocket braucht 50-60% der Zeit von TCP\n=\u003e unerwartet, schließt sich WebSocket-Interface noch während des Datenversands?\n","83d5f70e8910b691d627f189200e21fd":"Das WebSocket-Protokoll ist ein Internetprotokoll, welches bidirektionale Vollduplex-Kommunikation mit niedriger Latenz zwischen einem Client und einem Server ermöglicht.\n\nHTTP only? Nein, Header!","18e38e337b0b8d540853b47c0a117ff5":"TCP:\n-\u003e Datenvollständigkeit ist sichergestellt\n-\u003e die Reihenfolge der Daten wird eingehalten\n-\u003e Duplikation von Daten wird verhindert\n\n=\u003e Overhead (Sequenzierung, Empfangsbestätigung und Sendewiederholung)\n=\u003e kennt keine Gesamtlänge der Daten\n=\u003e in Kernel implementiert\n\nUDP:\n-\u003e aber: nur Ziel muss bekannt sein! Server: fest, Smartphone: mobil.\n-\u003e telekommunikativ unzuverlässig\n\nHTTP/3:\n-\u003e QUIC-Protokoll (Google, UDP)\n-\u003e kein head-of-line-blocking (multiplexing separater streams)\n-\u003e standardmäßige Verschlüsselung\n-\u003e keine Verbindungsabbrüche bei Netzwerkwechseln (connection ids)","730de1bcc58cb3797c21b6fee36c7800":"URI-Schema: ws://\nPort: 80 / 443","1835a71ee30a99b438eea46da2781426":"Serialisierung:\n-\u003e Vorab: Testobjekte werden generiert\n-\u003e Serialisierung in Liste, Zeitmessung ms\n\n=\u003e FlatBuffers braucht 1/4 der Zeit von JSON!\n\nDeserialisierung:\n-\u003e Vorab: Testobjekte werden in Dateien serialisiert\n  -\u003e eigener Präfix!\n-\u003e Deserialisierung, Zeitmessung ns/op\n\n=\u003e FlatBuffers braucht 1/4 der Zeit von JSON!","8550ea1ca4018da050866a237f7c7a7c":"Ausgewählte Kapitel"}}};
+
+
+			// Use local fonts
+			SLConfig.fonts_url = 'lib/fonts/';
+		</script>
+
+		<script src="lib/reveal.js"></script>
+		<script src="lib/reveal-plugins.js"></script>
+		<script src="lib/offline.js"></script>
+
+		<!-- Initialize the presentation -->
+		<script>
+			Reveal.initialize({
+				width: 960,
+				height: 700,
+				margin: 0.05,
+				
+
+				hash: true,
+				controls: true,
+				progress: true,
+				mouseWheel: false,
+				showNotes: false,
+				slideNumber: true,
+				fragmentInURL: true,
+
+				autoSlide: 0,
+				autoSlideStoppable: true,
+
+				autoAnimateMatcher: SL.deck.AutoAnimate.matcher,
+
+				center: false,
+				shuffle: false,
+				loop: false,
+				rtl: false,
+				navigationMode: "default",
+
+				transition: "fade",
+				backgroundTransition: "fade",
+
+				highlight: {
+					escapeHTML: false
+				},
+
+				plugins: [ RevealZoom, RevealNotes, RevealMarkdown, RevealHighlight ]
+			});
+		</script>
+
+		
+
+	</body>
+</html>
